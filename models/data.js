@@ -6,7 +6,7 @@ async function getAllVancations() {
 }
 
 async function getVancationById(id) {
-  const result = await query(`SELECT id FROM vancations WHERE id = $1`, [id]);
+  const result = await query(`SELECT * FROM vancations WHERE id = $1`, [id]);
   return result.rows[0];
 }
 
@@ -41,11 +41,11 @@ async function removeVancationById(id) {
   console.log(result.rows[0]);
 }
 
-async function updateVancation(id) {
+async function updateVancation(id, spot) {
   const { uuid, location, address, date, details } = spot;
   const result = await query(
-    `UPDATE vancations(uuid = COALESCE($2, uuid), location = COALESCE($3, location), address = COALESCE($4, address), date = COALESCE($5, date), details= COALESCE($6, details) WHERE id = $1 RETURNING *`,
-    [uuid, location, address, date, details]
+    `UPDATE vancations SET uuid = COALESCE($2, uuid), location = COALESCE($3, location), address = COALESCE($4, address), date = COALESCE($5, date), details= COALESCE($6, details) WHERE id = $1 RETURNING *`,
+    [id, uuid, location, address, date, details]
   );
   return result.rows[0];
 }
