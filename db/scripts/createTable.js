@@ -23,6 +23,7 @@ const createTable = async () => {
 createTable();
 
 //note to self: remember to run script from the ROOT directory else dotenv doesn't work
+//node -r dotenv/config db/scripts/populateTable.js  from root folder
 
 // query(sqlStatement, (err, res) => {
 //   if (err) {
