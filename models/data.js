@@ -10,11 +10,10 @@ async function getVancationById(id) {
   return result.rows[0];
 }
 
-async function getVancationByLatLng(lat, lng) {
-  const result = await query(
-    `SELECT * FROM vancations WHERE location = $1, $2`,
-    [lat, lng]
-  );
+async function getVancationByLatLng(location) {
+  const result = await query(`SELECT * FROM vancations WHERE location = $1`, [
+    location,
+  ]);
 }
 
 async function addVancation(spot) {
@@ -26,10 +25,10 @@ async function addVancation(spot) {
   return result.rows[0];
 }
 
-async function removeVancation(lat, lng) {
+async function removeVancation(location) {
   const result = await query(
-    `DELETE FROM vancations WHERE location = $1, $2 RETURNING address`,
-    [lat, lng]
+    `DELETE FROM vancations WHERE location = $1 RETURNING address`,
+    [location]
   );
   console.log(result.rows);
 }

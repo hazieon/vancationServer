@@ -1,6 +1,6 @@
 const { Pool } = require("pg");
 // require("dotenv").config();
-console.log(process.env.PGDATABASE_URL, "env config");
+// console.log(process.env.PGDATABASE_URL, "env config");
 const pool = new Pool({
   connectionString: process.env.PGDATABASE_URL,
   ssl: { rejectUnauthorized: false },
