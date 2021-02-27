@@ -5,7 +5,8 @@ DROP TABLE IF EXISTS vancations;
 CREATE TABLE IF NOT EXISTS vancations(
     id SERIAL PRIMARY KEY,
     uuid VARCHAR,
-    location VARCHAR,
+    lat NUMBER,
+    lng NUMBER,
     address VARCHAR DEFAULT 0000,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     details VARCHAR

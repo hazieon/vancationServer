@@ -4,7 +4,7 @@ var router = express.Router();
 const {
   getAllVancations,
   getVancationById,
-  getVancationByLatLng,
+  getVancationByLat,
   addVancation,
   removeVancation,
   removeVancationById,
@@ -32,10 +32,10 @@ router.get("/:id", async function (req, res, next) {
   }
 });
 
-router.get("/:location", async function (req, res, next) {
+router.get("/:lat", async function (req, res, next) {
   try {
-    const location = req.params.location;
-    const result = await getVancationByLatLng(location);
+    const lat = req.params.lat;
+    const result = await getVancationByLat(lat);
     res.json({ success: true, data: result });
   } catch (err) {
     console.log(err);
@@ -55,10 +55,10 @@ router.post("/", async function (req, res, next) {
   }
 });
 
-router.delete(":location", async function (req, res, next) {
+router.delete(":lat", async function (req, res, next) {
   try {
-    const location = req.params.location;
-    const deleted = await removeVancation(location);
+    const lat = req.params.lat;
+    const deleted = await removeVancation(lat);
     res.json({ success: true });
     console.log("deleted spot");
   } catch (err) {
