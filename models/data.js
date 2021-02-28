@@ -1,4 +1,5 @@
 const { query } = require("../db/index");
+const { v4: uuidv4 } = require("uuid");
 
 async function getAllVancations() {
   const result = await query(`SELECT * FROM vancations`);
@@ -11,13 +12,11 @@ async function getVancationById(id) {
 }
 
 async function getVancationByLat(lat) {
-  const result = await query(`SELECT * FROM vancations WHERE lat = $1`, [
-    lat,
-  ]);
+  const result = await query(`SELECT * FROM vancations WHERE lat = $1`, [lat]);
 }
 
 async function addVancation(spot) {
-  const { uuid, lat, lng, address, date, details } = spot;
+  const { uuid = uuidv4(), lat, lng, address, date, details } = spot;
   const result = await query(
     `INSERT INTO vancations(uuid, lat, lng, address, date, details) VALUES($1, $2, $3, $4, $5, $6) RETURNING *`,
     [uuid, lat, lng, address, date, details]
