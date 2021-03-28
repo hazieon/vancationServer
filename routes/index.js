@@ -81,7 +81,6 @@ router.patch("/:id", async function (req, res, next) {
   try {
     const { body } = req;
     const { id } = req.params;
-    console.log(id);
     const result = await updateVancation(id, body);
     res.json({ success: true });
     console.log("patched vancation");
