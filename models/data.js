@@ -34,7 +34,7 @@ async function removeVancation(lat) {
 
 async function removeVancationById(id) {
   const result = await query(
-    `DELETE FROM vancations WHERE id = $1 RETURNING address`,
+    `DELETE FROM vancations WHERE uuid = $1`,
     [id]
   );
   console.log(result.rows[0]);
