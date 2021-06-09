@@ -1,7 +1,7 @@
 const { query } = require("../index.js");
 
 const sqlStatement = `
-SELECT * FROM vancations`;
+SELECT * FROM wysteria`;
 
 const getTable = async () => {
   const result = await query(sqlStatement);

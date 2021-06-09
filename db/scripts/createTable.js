@@ -1,8 +1,8 @@
 const { query } = require("../index.js");
 
 const sqlStatement = `
-DROP TABLE IF EXISTS vancations;
-CREATE TABLE IF NOT EXISTS vancations(
+DROP TABLE IF EXISTS wysteria;
+CREATE TABLE IF NOT EXISTS wysteria(
     id SERIAL PRIMARY KEY,
     uuid VARCHAR,
     lat VARCHAR,
