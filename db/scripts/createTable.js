@@ -1,4 +1,6 @@
 const { query } = require("../index.js");
+require("dotenv").config();
+console.log("config");
 
 const sqlStatement = `
 DROP TABLE IF EXISTS wysteria;

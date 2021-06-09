@@ -1,4 +1,6 @@
 const { query } = require("../index.js");
+require("dotenv").config();
+console.log(env);
 
 const sqlStatement = `
 SELECT * FROM wysteria`;

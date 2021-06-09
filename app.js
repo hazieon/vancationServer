@@ -9,6 +9,7 @@ var bodyParser = require("body-parser");
 var indexRouter = require("./routes/index");
 var cors = require("cors");
 var app = express();
+require("dotenv").config();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

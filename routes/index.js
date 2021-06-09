@@ -2,20 +2,20 @@ var express = require("express");
 var router = express.Router();
 
 const {
-  getAllVancations,
-  getVancationById,
-  getVancationByLat,
-  addVancation,
-  removeVancation,
-  removeVancationById,
-  updateVancation,
+  getAllWysteria,
+  getWysteriaById,
+  getWysteriaByLat,
+  addWysteria,
+  removeWysteria,
+  removeWysteriaById,
+  updateWysteria,
 } = require("../models/data");
 
 /* GET home page. */
 router.get("/", async function (req, res, next) {
   // res.render("index", { title: "Express" });
   try {
-    const result = await getAllVancations();
+    const result = await getAllWysteria();
     res.json({ success: true, data: result });
   } catch (err) {
     console.log(err);
@@ -25,7 +25,7 @@ router.get("/", async function (req, res, next) {
 router.get("/:id", async function (req, res, next) {
   try {
     const id = req.params.id;
-    const result = await getVancationById(id);
+    const result = await getWysteriaById(id);
     res.json({ success: true, data: result });
   } catch (err) {
     console.log(err);
@@ -35,7 +35,7 @@ router.get("/:id", async function (req, res, next) {
 router.get("/:lat", async function (req, res, next) {
   try {
     const lat = req.params.lat;
-    const result = await getVancationByLat(lat);
+    const result = await getWysteriaByLat(lat);
     res.json({ success: true, data: result });
   } catch (err) {
     console.log(err);
@@ -44,12 +44,12 @@ router.get("/:lat", async function (req, res, next) {
 
 router.post("/", async function (req, res, next) {
   try {
-    console.log("post vancation");
+    console.log("post Wysteria");
     const { body } = req;
     console.log(body);
-    const data = await addVancation(body);
+    const data = await addWysteria(body);
     console.log(data);
-    res.json({ message: `Added a new Vancation spot` });
+    res.json({ message: `Added a new Wysteria spot` });
   } catch (err) {
     console.log(err);
   }
@@ -58,7 +58,7 @@ router.post("/", async function (req, res, next) {
 router.delete(":lat", async function (req, res, next) {
   try {
     const lat = req.params.lat;
-    const deleted = await removeVancation(lat);
+    const deleted = await removeWysteria(lat);
     res.json({ success: true });
     console.log("deleted spot");
   } catch (err) {
@@ -69,7 +69,7 @@ router.delete(":lat", async function (req, res, next) {
 router.delete("/:id", async function (req, res, next) {
   try {
     const id = req.params.id;
-    const deleted = await removeVancationById(id);
+    const deleted = await removeWysteriaById(id);
     res.json({ success: true });
     console.log("deleted spot");
   } catch (err) {
@@ -81,9 +81,9 @@ router.patch("/:id", async function (req, res, next) {
   try {
     const { body } = req;
     const { id } = req.params;
-    const result = await updateVancation(id, body);
+    const result = await updateWysteria(id, body);
     res.json({ success: true });
-    console.log("patched vancation");
+    console.log("patched Wysteria");
   } catch (err) {
     console.log(err);
   }
